@@ -1,28 +1,51 @@
-=head0 Preface
+=head0 *Preface
 
-Perl turns 23 years old later this year.  The language has gone from a simple
-tool for system administration somewhere between shell scripting and C
-programming (Perl 1) to a powerful, general purpose language steeped in a rich
-heritage (Perl 5) and a consistent, coherent, rethinking of programming in
-general intended to last for another 25 years (Perl 6).
+I<Modern Perl> is one way to describe the way the world's most effective Perl 5
+programmers work. They use language idioms. They take advantage of the CPAN.
+They show good taste and craft to write powerful, maintainable, scalable,
+concise, and effective code. You can learn these skills too!
 
-Even so, most Perl 5 programs in the world take far too little advantage of the
-language.  You I<can> write Perl 5 programs as if they were Perl 4 programs (or
-Perl 3 or 2 or 1), but programs written to take advantage of everything amazing
-the worldwide Perl 5 community has invented, polished, and discovered are
-shorter, faster, more powerful, and easier to maintain than their alternatives.
+Perl first appeared in 1987 as a simple tool for system administration. Though
+it began by declaring and occupying a comfortable niche between shell scripting
+and C programming, it's become a powerful, general-purpose language family.
+Perl 5 has a solid history of pragmatism and a bright future of polish and
+enhancementN<Perl 6 is a reinvention of programming based on the solid
+principles of Perl, but it's a subject of another book.>.
 
-I<Modern Perl> is a loose description of how experienced and effective Perl 5
-programmers work.  They use language idioms.  They take advantage of the CPAN.
-They're recognizably Perlish, and they show good taste and craftsmanship and a
-full understanding of Perl.
+Over Perl's long history--especially the 17 years of Perl 5--our understanding
+of what makes great Perl programs has changed. While you can write productive
+programs which never take advantage of all the language has to offer, the
+global Perl community has invented, borrowed, enhanced, and polished ideas and
+made them available to anyone willing to learn them.
 
-You can learn this too.
+=head1 Running Modern Perl
 
-=head0 Running Modern Perl
+=begin sidebar
 
-You don't have to install a new version of Perl to take advantage of most of
-this book, but the examples given assume that you're using Perl 5.10 or newer.
+The Modern::Perl module from the CPAN (L<cpan>) asks Perl to warn of dubious
+constructs and typos and will enable new features introduced in modern releases
+of Perl 5. Assume every example in this book begins with:
+
+=begin programlisting
+
+    use Modern::Perl;
+
+=end programlisting
+
+If you cannot yet install this module, you may start your programs with the
+rough equivalent:
+
+=begin programlisting
+
+    use 5.012;
+    use strict;
+    use warnings;
+    use autodie;
+
+=end programlisting
+
+=end sidebar
+
 Unless otherwise mentioned, code snippets always assume the basic skeleton of a
 program:
 
@@ -53,26 +76,50 @@ C<is()> (L<testing>).  That skeleton program is:
 
 =end programlisting
 
-If you don't already have a modern version of Perl installed, you can often
-install one yourself.  Windows users can download Strawberry Perl from
-U<http://www.strawberryperl.com/>.  Users of other operating systems with Perl
-5 already installed (and a C compiler and the other development tools), start
-by installing the CPAN module C<App::perlbrew>N<See
+At the time of writing, the current stable Perl 5 release family is Perl 5.14.
+The examples in this book work best with Perl 5.12.0 or newer. Many examples
+will work on older versions of Perl 5 with modest changes, but you will have
+more difficulty with anything older than 5.10.0.
+
+X<Strawberry Perl>
+X<ActivePerl>
+X<perlbrew>
+X<CPAN; C<App::perlbrew>>
+
+If you have no Perl 5 installed (or if you have an old version installed), you
+can install a newer release yourself. Windows users, download Strawberry Perl
+from U<http://www.strawberryperl.com/> or ActivePerl from
+U<http://www.activestate.com/activeperl>. Users of other operating systems with
+Perl 5 already installed (and a C compiler and the other development tools),
+start by installing the CPAN module C<App::perlbrew>N<See
 U<http://search.cpan.org/perldoc?App::perlbrew> for installation
 instructions.>.
 
-C<perlbrew> allows you to install and to manage multiple versions of Perl 5.
-By default, it installs them to your own home directory.  Not only can you have
-multiple versions of Perl 5 installed without affecting the system Perl but you
-can also install any module you like into these directories without asking your
-system administrator for specific permission.
+C<perlbrew> allows you to install and manage multiple versions of Perl 5. This
+allows you to switch between versions of Perl 5 as well as to install Perl 5
+and CPAN modules in your home directory without affecting the system's version.
+If you've ever had to beg your system administrator for permission to install
+software, you know how much easier your life can be now.
 
-=begin sidebar
+=head1 Credits
 
-Which version of Perl 5 should you install?  The rest of this book assumes
-you're using something at least as new as Perl 5.10.0--preferably 5.10.1--but,
-as written, all code examples will work with every release in the Perl 5.12.x
-family.  The book also indicates features added to Perl 5.12.
+This book would not have been possible without questions, comments,
+suggestions, advice, wisdom, and encouragement from many, many people. In
+particular, the author and editor thank:
 
-=end sidebar
+John SJ Anderson, Peter Aronoff, Lee Aylward, Alex Balhatchet, Ævar Arnfjörð
+Bjarmason, Matthias Bloch, John Bokma, Vasily Chekalkin, Dmitry Chestnykh, E.
+Choroba, Paulo Custodio, Felipe, Shlomi Fish, Jeremiah Foster, Mark Fowler,
+John Gabriele, Andrew Grangaard, Bruce Gray, Ask Bjørn Hansen, Tim Heaney,
+Robert Hicks, Michael Hind, Mark Hindess, Yary Hluchan, Mike Huffman, Curtis
+Jewell, Mohammed Arafat Kamaal, James E Keenan, Yuval Kogman, Jan Krynicky,
+Jeff Lavallee, Moritz Lenz, Jean-Baptiste Mazon, Josh McAdams, Gareth
+McCaughan, John McNamara, Shawn M Moore, Alex Muntada, Carl Mäsak, Chris
+Niswander, Nelo Onyiah, Chas. Owens, ww from PerlMonks, Jess Robinson, Dave
+Rolsky, Gabrielle Roth, Andrew Savige, Lorne Schachter, Dan Scott, Alexander
+Scott-Johns, Phillip Smith, Christopher E. Stith, Mark A. Stratman, Bryan
+Summersett, Audrey Tang, Scott Thomson, Ben Tilly, Sam Vilain, Larry Wall,
+Colin Wetherbee, Frank Wiegand, Doug Wilson, Sawyer X, David Yingling, Marko
+Zagozen, harleypig, hbm, and sunnavy.
 
+Any remaining errors are the fault of the stubborn author.
